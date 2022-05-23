@@ -1,7 +1,6 @@
 const { Schema, Types } = require('mongoose');
-
 // Schema to create a course model
-const thoughtSchema = new Schema(
+const reactionSchema = new Schema(
   {
     reactionId: {
       type: String,
@@ -35,9 +34,6 @@ const thoughtSchema = new Schema(
   
 );
 
-thoughtSchema.virtual('reactionCount').get(function () {
-  return this.reactions.length;
-});
-const Reaction = model('reaction', ReactionSchema);
+const Reaction = ('reaction', reactionSchema);
 
 module.exports = Reaction;

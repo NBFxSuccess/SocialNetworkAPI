@@ -1,6 +1,6 @@
 const connection = require('../config/connection');
 const { Thought, User } = require('../models');
-const { getRandomName, getRandomThoughts } = require('./data');
+const { getRandomName, getlistThoughts } = require('./data');
 
 connection.on('error', (err) => err);
 
@@ -20,21 +20,21 @@ connection.once('open', async () => {
   // Loop 20 times -- add students to the students array
   for (let i = 0; i < 20; i++) {
     // Get some random assignment objects using a helper function that we imported from ./data
-    const thoughts = getRandomAssignments(20);
+    const thoughts = getlistThoughts(20);
 
     const username = getRandomName();
-    const email = `${username}@${username}.com`;
-    const friends = getRandomName;
+    const email = `${username}@gmail.com`;
+    const friends = getRandomName();
 
     userthoughts.push({
       thoughts,
     });
+    users.push({
+      username,
+      email,
+      friends,
+    });
   }
-  users.push({
-    username,
-    email,
-    friends,
-  });
 
   // Add students to the collection and await the results
   await User.collection.insertMany(users);
