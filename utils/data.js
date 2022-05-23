@@ -107,7 +107,7 @@ const getlistThoughts = (int) => {
   const results = [];
   for (let i = 0; i < int; i++) {
     results.push({
-      assignmentName: getRandomArrItem(appDescriptions),
+      assignmentName: getRandomArrItem(listThoughts),
       score: Math.floor(Math.random() * (99 - 70 + 1) + 70),
     });
   }
