@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, Types } = require('mongoose');
 
 // Schema to create a course model
 const thoughtSchema = new Schema(
@@ -38,6 +38,6 @@ const thoughtSchema = new Schema(
 thoughtSchema.virtual('reactionCount').get(function () {
   return this.reactions.length;
 });
-const Course = model('course', courseSchema);
+const Reaction = model('reaction', ReactionSchema);
 
-module.exports = Course;
+module.exports = Reaction;

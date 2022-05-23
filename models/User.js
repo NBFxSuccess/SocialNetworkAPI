@@ -4,30 +4,38 @@ const assignmentSchema = require('./Assignment');
 // Schema to create Student model
 const userSchema = new Schema(
   {
-    first: {
+    username: {
       type: String,
       required: true,
       max_length: 50,
+      unique: true,
+      trim: true,
     },
-    last: {
+    email: {
       type: String,
       required: true,
       max_length: 50,
+      unique:true,
+      match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
     },
-    github: {
-      type: String,
-      required: true,
-      max_length: 50,
+    toughts: {
+      type: Schema.Types.Array, ref: "thoughtSchema.thoughtId",
     },
-    assignments: [assignmentSchema],
   },
   {
     toJSON: {
       getters: true,
     },
+    friends: {
+      type: Schema.Types.Array, ref: 'users.id',  
+    }, 
+    
   }
+  
 );
-
+User.virtual('friendCount').get(function () {
+  return this.friends.length;
+});
 const User = model('user', userSchema);
 
 module.exports = User;
