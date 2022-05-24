@@ -1,4 +1,3 @@
-const { ObjectId } = require('mongoose').Types;
 const { User, Thought } = require('../models');
 
 // Aggregate function to get the number of users overall
@@ -7,14 +6,8 @@ module.exports = {
   // Get all Users
   getUsers(req, res) {
     User.find()
-    .populate('thoughts')
-    .populate('friends')
-     .then(
-       (users) => res.json(users)
-     )
-     .catch(
-       (err) => res.status(500).json(err)
-     )
+      .then((userlist) => res.json(userlist))
+      .catch((err) => res.status(500).json(err));
   },
   // Get a single user
   getSingleUser(req, res) {
