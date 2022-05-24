@@ -8,17 +8,17 @@ const userSchema = new Schema(
       type: String,
       required: true,
       max_length: 50,
-      unique: true,
+    //  unique: true,
       trim: true,
     },
     email: {
       type: String,
       required: true,
       max_length: 50,
-      unique:true,
+     // unique:true,
       match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
     },
-    toughts: {
+    thoughts: {
       type: Schema.Types.Array, ref: "thoughtSchema.thoughtId",
     },
   },
