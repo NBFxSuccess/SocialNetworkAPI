@@ -31,7 +31,7 @@ npm i
 
 
 ## Usage
-https://user-images.githubusercontent.com/98627133/169949588-62a2c9a6-f573-4ca9-9785-c2fc5164079e.mp4
+https://honchoclothes.com/walkthroughvideo.mp4
 
 
 
