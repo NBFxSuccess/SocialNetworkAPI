@@ -31,7 +31,9 @@ npm i
 
 
 ## Usage
-npm run start
+https://user-images.githubusercontent.com/98627133/169949588-62a2c9a6-f573-4ca9-9785-c2fc5164079e.mp4
+
+
 
 
 ## License
