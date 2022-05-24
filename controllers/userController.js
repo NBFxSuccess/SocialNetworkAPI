@@ -7,6 +7,8 @@ module.exports = {
   // Get all Users
   getUsers(req, res) {
     User.find()
+    .populate('thoughts')
+    .populate('friends')
      .then(
        (users) => res.json(users)
      )
