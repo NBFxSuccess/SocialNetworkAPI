@@ -31,7 +31,10 @@ npm i
 
 
 ## Usage
-https://www.honchoclothes.com/walkthroughvideo.mp4
+
+https://user-images.githubusercontent.com/98627133/169951060-b73a471a-7ba0-4330-9d09-cd96efe51246.mp4
+
+
 
 
 
