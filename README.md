@@ -43,7 +43,7 @@ https://user-images.githubusercontent.com/98627133/169951060-b73a471a-7ba0-4330-
 MIT
 
 ## Contribution
-Contribute if you would like. Redo in SQL if you are going to.
+Contribute if you would like. Redo with SQL if you are going to.
 
 
 ## Tests
