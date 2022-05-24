@@ -31,7 +31,7 @@ npm i
 
 
 ## Usage
-https://honchoclothes.com/walkthroughvideo.mp4
+https://www.honchoclothes.com/walkthroughvideo.mp4
 
 
 
