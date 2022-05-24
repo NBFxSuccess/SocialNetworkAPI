@@ -17,8 +17,6 @@ Social Network API implementing post, get, and put requests with the help of Mon
 
 * [Contribution Guidelines](#contribution)
 
-* [Tests](#tests)
-
 * [Questions](#questions)
 
 
@@ -46,12 +44,6 @@ MIT
 Contribute if you would like. Redo with SQL if you are going to.
 
 
-## Tests
-To run tests run the following command:
-
-```
-none
-```
 
 
 ## Questions
