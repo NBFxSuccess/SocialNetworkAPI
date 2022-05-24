@@ -3,10 +3,8 @@ const { Schema, Types } = require('mongoose');
 const reactionSchema = new Schema(
   {
     reactionId: {
-      type: String,
-      required: true,
-      maxlength: 280,
-      minlength: 1,
+      type: Types.ObjectId,
+      default: new Types.ObjectId(),
     },
     reactionBody: {
       type: String,
@@ -22,7 +20,6 @@ const reactionSchema = new Schema(
     },
     updatedAt: {
       type: Date,
-      get: (date) => timeSince(date),
     },
   },
   {

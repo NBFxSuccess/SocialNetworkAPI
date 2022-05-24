@@ -14,11 +14,11 @@ const thoughtSchema = new Schema(
       type: String,
       default: true,
     },
-    reactions: [reactionSchema],
     createdAt: {
       type: Date,
       default: Date.now(),
     },
+    reactions: [reactionSchema],
   },
   {
     toJSON: {

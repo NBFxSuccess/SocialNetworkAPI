@@ -36,25 +36,12 @@ module.exports = {
   // Delete a thought
   deleteThought(req, res) {
     Thought.findOneAndDelete({ _id: req.params.thoughtId })
-      .then((thought) =>
-        !thought
-          ? res.status(404).json({ message: 'No thought with that ID' })
-          : User.deleteMany(
-            { thoughts: req.params.thoughtId },
-            { $pull: { thoughts: req.params.thoughtId } },
-            { new: true })
-      )
-      .then((user) =>
-      !user
-        ? res.status(404).json({
-            message: 'Deleted thoughts from deleted user',
-          })
-        : res.json({ message: 'Thought successfully deleted' })
-    )
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+        .then((userIsMore) =>
+            !userIsMore
+                ? res.status(404).json({ message: 'No thought with that ID' })
+                : res.json(userIsMore)
+        )
+        .catch((err) => res.status(500).json(err));
 },
 addReaction(req, res) {
   Thought.findOneAndUpdate( 
@@ -86,20 +73,19 @@ addReaction(req, res) {
       )
       .catch((err) => res.status(500).json(err));
   },
-  removeReaction(req, res) {
+  deleteReaction(req, res) {
     Thought.findOneAndUpdate(
-      { _id: req.params.thoughtId },
-      { $pull: { reactions: { reactionId: req.params.reactionId } } },
-      { new: true }
-    )
-      .then((thought) =>
-        !thought
-          ? res
-              .status(404)
-              .json({ message: 'No thought found with that ID :(' })
-          : res.json(`Deleted reaction '${req.params.reactionId}' from thought # ${req.params.thoughtId}`)
-      )
-      .catch((err) => res.status(500).json(err));
-  },
-  
-};
+        { _id: req.params.thoughtId },
+        { $pull: { reactions: { reactionId: req.params.reactionId } } },
+        { new: true })
+        .then(data => {
+            if (!data) {
+                res.status(404).json({ message: 'No thought with that ID' });
+                return;
+            }
+            res.json(data);
+        })
+        .catch(err => res.status(400).json(err));
+}
+
+}

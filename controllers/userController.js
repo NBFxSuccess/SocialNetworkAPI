@@ -1,13 +1,10 @@
 const { User, Thought } = require('../models');
-
-// Aggregate function to get the number of users overall
-// Aggregate function for getting the overall grade using $avg
 module.exports = {
   // Get all Users
   getUsers(req, res) {
     User.find()
-      .then((userlist) => res.json(userlist))
-      .catch((err) => res.status(500).json(err));
+    .then((userlist) => res.json(userlist))
+      .catch((err) => res.status(400).json(err));
   },
   // Get a single user
   getSingleUser(req, res) {
@@ -29,7 +26,10 @@ module.exports = {
   createUser(req, res) {
     User.create(req.body)
       .then((user) => res.json(user))
-      .catch((err) => res.status(500).json(err));
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json(err);
+      });
   },
   // Delete a user and remove them from the course
   deleteUser(req, res) {
@@ -46,7 +46,7 @@ module.exports = {
           ? res.status(404).json({
               message: 'no user found',
             })
-          : res.json({ message: 'Thought deleted' })
+          : res.json({ message: 'User deleted' })
       )
       .catch((err) => {
         console.log(err);
@@ -131,7 +131,7 @@ module.exports = {
               .status(404)
               .json({ message: 'No user found by that ID :(' })
           // : res.json(user)
-          : res.json(`User '${req.params.friendId}' is now friends with ${req.params.userId}`)
+          : res.json(`User '${req.params.friendId}' is no longer friends with ${req.params.userId}`)
       )
       .catch((err) => res.status(500).json(err));
   },
